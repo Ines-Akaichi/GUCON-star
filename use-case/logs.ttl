@@ -1,0 +1,39 @@
+@prefix  xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spl: <http://specialprivacy.ercim.eu/langs/usage-policy#> .
+@prefix  dct: <http://purl.org/dc/terms/> .
+@prefix  prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix  eg: <http://www.example.org#> .
+@prefix splog: <http://purl.org/specialprivacy/splog#> .
+
+# Declare assertions
+
+eg:person1 rdf:type eg:Person .
+eg:person1 eg:position eg:Journalist .
+
+#declare atomic events 
+
+eg:person1   eg:share  <http://example.com/MediaCoverage/l.premierleague.com-2020-coverage> .
+
+# Declare the log entry 
+
+eg:log1 rdf:type splog:Log ;
+dct:title             "Log of tracking application of media sharing of the premier league match"@en ;
+dct:description       "This contains all traces of  media coverage sharing"@en ;
+dct:issued             "2021-02-25T20:30:50Z"^^xsd:dateTimeStamp  ;
+prov:wasAttributedTo  eg:TrackingSystemR2D2  ;
+splog:event <<eg:person1  eg:share  <http://example.com/MediaCoverage/l.premierleague.com-2020-coverage> >> . 
+
+<<eg:person1  eg:share  <http://example.com/MediaCoverage/l.premierleague.com-2020-coverage> >>  rdf:type   splog:SharingEvent ;
+    splog:recipient    eg:recipient1;
+    dct:title               "tracking media sharing as part of the premier league"@en ;
+    splog:dataSubject       eg:person1 ;
+    dct:description         "We tracked a new sharing of match materials"@en ;
+    splog:transactionTime   "2021-02-25T20:30:50Z"^^xsd:dateTimeStamp ;
+    splog:validityTime      "2021-02-25T20:30:00Z"^^xsd:dateTime  ;
+    splog:message           "sharing of match resources ... tracked " ;
+    splog:instanceData  <http://example.com/MediaCoverage/l.premierleague.com-2020-coverage>  ;
+    splog:occurs  "2021-02-25T20:30:50Z"^^xsd:dateTime . 
+                                                  
