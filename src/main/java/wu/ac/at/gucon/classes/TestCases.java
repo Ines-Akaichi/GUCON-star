@@ -12,6 +12,11 @@ import org.apache.jena.riot.RDFDataMgr;
 
 public class TestCases {
 	
+	public TestCases ()
+	
+	{
+		
+	}
 	public static List<String>  readRulesFromFile (String FilePath) throws IOException
 	{
 		BufferedReader br = null; 

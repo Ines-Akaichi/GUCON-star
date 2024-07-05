@@ -14,7 +14,6 @@ public class ComplianceChecker {
 	{
 		
 		String sparql = "select * where {" + graphPattern + "}";
-		//System.out.println("Select Condition query "+sparql);
 		
 		
 		return sparql;
@@ -24,17 +23,13 @@ public class ComplianceChecker {
    public String createAskSparql (String deonticPattern)
 	{
 		String askQuery = "ASK where { " + deonticPattern + "}";
-	
-		//System.out.println("Ask query:  "+askQuery);
-		return askQuery;
+			return askQuery;
 	}
 	
    public Boolean exists (String deonticPattern, Dataset dataset)
 	{
 		Boolean exist = false;
-		//String askSparql = "ASK  where {" + pattern + "}";
 		String askSparql = createAskSparql (deonticPattern);
-		//System.out.println(askSparql);
 		Query sparql = QueryFactory.create(askSparql);
 		QueryExecution qe = QueryExecutionFactory.create(sparql, dataset);
 		boolean result = qe.execAsk();
@@ -55,7 +50,6 @@ public class ComplianceChecker {
        	Query sparql =null;
        	QueryExecution qe =null;
        	ResultSet results =null;
-		//System.out.println(r.getActionPattern().trim());
 
 		switch (r.getDeonticOperator())
 
@@ -63,7 +57,6 @@ public class ComplianceChecker {
 		case "A":
 			System.out.println("case A");
 		 	oppositeSparqlCOndition = r.replaceGraphPattern(r.getGraphPattern().trim());
-    		//System.out.println("check rule" +oppositeSparqlCOndition);
 			sparqlCondition = createSelectSparql (oppositeSparqlCOndition);
 			sparql = QueryFactory.create(sparqlCondition);
 			qe = QueryExecutionFactory.create(sparql, dataset);
@@ -71,13 +64,6 @@ public class ComplianceChecker {
 	
 			if(results!=null)  // condition is active -- that mean there is a entry in the log that fired this condition
 			{	
-				/*System.out.println("The condition of the rule is active");
-			
-				
-				if (exists (r.getActionPattern(),dataset)) {
-							compliant =false;
-							System.out.println("not compliant");		 
-			    }*/	
 				if (results.hasNext())
 				{
 				ResultSetFormatter.out(results);
@@ -100,11 +86,7 @@ public class ComplianceChecker {
 			
 			if(results!=null)  // condition is active -- that mean there is a entry in the log that fired this condition
 			{
-					/*System.out.println("The condition of the rule is active");
-		    		if (exists (r.getActionPattern(),dataset)) {
-						compliant =false;
-						System.out.println("not compliant");		 
-				    }*/
+		
 				if (results.hasNext())
 				{
 				ResultSetFormatter.out(results);
@@ -132,13 +114,7 @@ public class ComplianceChecker {
 			{
 				if (results.hasNext())
 				{
-				/*System.out.println("The condition of the rule is active");
-					if (!exists (r.getActionPattern(),dataset)) {
-						
-							compliant =false;
-							System.out.println("not compliant");		 
-					}	*/			
-				//compliant =false;
+
 				ResultSetFormatter.out(results);
 				System.out.println("The knowledge base is  compliant");
 				}	
@@ -155,7 +131,6 @@ public class ComplianceChecker {
 		case "D":
 			System.out.println("case D");
 			oppositeSparqlCOndition = r.replaceGraphPattern(r.getGraphPattern());
-    		//System.out.println("check rule" +oppositeSparqlCOndition);
 			sparqlCondition = createSelectSparql (oppositeSparqlCOndition);
 			sparql = QueryFactory.create(sparqlCondition);
 			qe = QueryExecutionFactory.create(sparql, dataset);
@@ -163,13 +138,7 @@ public class ComplianceChecker {
 			
 			if(results!=null)  // condition is active -- that mean there is a entry in the log that fired this condition
 			{
-					/*System.out.println("The condition of the rule is active");
-					if (exists (r.getActionPattern(),dataset)) {
-							compliant =false;
-							System.out.println("not compliant");		 
-					}	
-					
-					//System.out.println("compliant");*/
+		
 				if (results.hasNext())
 				{
 				ResultSetFormatter.out(results);
