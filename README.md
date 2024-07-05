@@ -74,6 +74,6 @@ The output specifies wether a specific Knowledge Base is compliant or not with t
 # How to use our framework
 Run the jar under the target folder. The JAR can be invoked from the command line using the following command:
 ```
-java -jar gucon-reified-0.0.1-SNAPSHOT.jar arg1 arg2;
+java -jar gucon-reified-0.0.1-SNAPSHOT.jar arg1 arg2
 ```
 Where arg1 is the path for the KB file (.ttl), and arg2 is the path for the rules (.txt).
