@@ -1,0 +1,127 @@
+@prefix rdf:       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms:   <http://purl.org/dc/terms/> .
+@prefix skos:      <http://www.w3.org/2004/02/skos/core#> .
+@prefix sport:     <https://sportschema.org/ontologies/main/> .
+@prefix spstat:    <https://sportschema.org/ontologies/corestatistics/> .
+@prefix spsocstat: <https://sportschema.org/ontologies/soccer/> .
+@prefix medtop: <http://cv.iptc.org/newscodes/mediatopic/> .
+@prefix spct: <http://cv.iptc.org/newscodes/spcompetitiontype/> .    # not sure if this exists yet
+@prefix speventoutcometype: <http://cv.iptc.org/newscodes/speventoutcometype/>.  # not sure if this exists yet
+@prefix speventoutcome: <http://cv.iptc.org/newscodes/speventoutcome/>.  # not sure if this exists yet
+@prefix media: <http://cv.media.example.org/> .
+
+
+<http://example.com/Competition/l.premierleague.com-2020>
+        rdf:type               sport:Competition ;
+        rdfs:label             "English Premier League 2020" ;
+        sport:competitionType  spct:competition .
+
+<http://example.com/CompetitionPhase/l.premierleague.com-2020-week-16>
+        rdf:type                  sport:CompetitionPhase ;
+        rdfs:label                "Week 16" ;
+        sport:phaseInCompetition  <http://example.com/Competition/l.premierleague.com-2020> .
+
+<http://example.com/Event/E2128607>
+        rdf:type                       sport:Event ;
+        rdfs:label                     "Arsenal vs Liverpool, Week 16, EPL" ;
+        sport:eventInCompetition       <http://example.com/Competition/l.premierleague.com-2020> ;
+        sport:eventInCompetitionPhase  <http://example.com/CompetitionPhase/l.premierleague.com-2020-week-16> ;
+        sport:participation            <http://example.com/Participation/E2128607-EPLT35> , <http://example.com/Participation/E2128607-EPLT7> ;    
+        sport:startDateTime            "2021-02-25T19:00:00+01:00"^^xsd:dateTime ;
+        sport:endDateTime              "2021-02-25T21:00:00+01:00"^^xsd:dateTime ;
+        media:coveredyBy               <http://example.com/MediaCoverage/l.premierleague.com-2020-coverage> .    
+
+
+<http://example.com/Participation/E2128607-EPLT35>
+        rdf:type                        sport:TeamParticipation ;
+        rdfs:label                      "Liverpool participation in Week 16, EPL" ;
+        spstat:eventOutcome             speventoutcome:tie ;
+        spstat:scoreOpposing            "2" ;
+        spstat:timeOfPossessionPercentage
+                "29.8" ;
+        sport:alignment                 "away" ;
+        sport:participationBy           <http://example.com/Team/EPLT35> ;
+        sport:score                     "2" ;
+        spsocstat:cautionsTotal         "2" ;
+        spsocstat:clearancesSuccessful  "28" ;
+        spsocstat:cornerKicks           "4" ;
+        spsocstat:foulsCommited         "9" ;
+        spsocstat:freeKicks             "2" ;
+        spsocstat:goalsAgainstTotal     "2" ;
+        spsocstat:interceptions         "8" ;
+        spsocstat:lineFormation         "4141" ;
+        spsocstat:offsides              "1" ;
+        spsocstat:passesTotal           "240" ;
+        spsocstat:shotsBlocked          "1" ;
+        spsocstat:shotsOnGoalTotal      "4" ;
+        spsocstat:shotsTotal            "10" ;
+        spsocstat:tacklesLost           "5" ;
+        spsocstat:tacklesTotal          "10" ;
+        spsocstat:tacklesWon            "5" ;
+        spsocstat:tacklesWonPercentage  "0.500" .
+
+<http://example.com/Participation/E2128607-EPLT7>
+        rdf:type                        sport:TeamParticipation ;
+        rdfs:label                      "Arsenal participation in Week 16, EPL" ;
+        spstat:eventOutcome             speventoutcome:tie ;
+        spstat:scoreOpposing            "2" ;
+        spstat:timeOfPossessionPercentage
+                "70.2" ;
+        sport:alignment                 "home" ;
+        sport:participationBy           <http://example.com/Team/EPLT7> ;
+        sport:score                     "2" ;
+        spsocstat:clearancesSuccessful  "14" ;
+        spsocstat:cornerKicks           "11" ;
+        spsocstat:foulsCommited         "14" ;
+        spsocstat:goalsAgainstTotal     "2" ;
+        spsocstat:interceptions         "7" ;
+        spsocstat:lineFormation         "4231" ;
+        spsocstat:offsides              "2" ;
+        spsocstat:passesTotal           "551" ;
+        spsocstat:shotsBlocked          "6" ;
+        spsocstat:shotsOnGoalTotal      "11" ;
+        spsocstat:shotsTotal            "24" ;
+        spsocstat:tacklesLost           "7" ;
+        spsocstat:tacklesTotal          "13" ;
+        spsocstat:tacklesWon            "6" ;
+        spsocstat:tacklesWonPercentage  "0.462" .
+
+<http://example.com/Team/EPLT35>
+        rdf:type    sport:Team ;
+        rdfs:label  "Liverpool" .
+
+<http://example.com/Team/EPLT7>
+        rdf:type    sport:Team ;
+        rdfs:label  "Arsenal" .
+
+
+
+<http://example.com/MediaCoverage/l.premierleague.com-2020-coverage>
+         rdf:type    media:MediaCoverage ;
+         media:production   <http://example.com/MediaResource/R01>, <http://example.com/MediaResource/R02>;
+         media:creationBy  <http://example.com/Creator/C01> .
+
+
+<http://example.com/MediaResource/R01> 
+        rdf:type   media:Video ;
+        media:title     "Interview Liverpool Team";
+        media:description   "Interview Liverpool Team" ;
+        media:isCreatedOn   "2021-02-25T18:30:00+01:00"^^xsd:dateTime;
+        ## media:releaseDate   ;   
+        media:sourceLocation   <http://media-soccer.com/MediaResource/R01>  .
+
+<http://example.com/MediaResource/R02> 
+        rdf:type   media:Video ;
+        media:title     "Interview Arsenal Team";
+        media:description   "Interview Arsenal Team" ;
+        media:isCreatedOn   "2021-02-25T18:00:00+01:00"^^xsd:dateTime;
+        ## media:releaseDate   ;   
+        media:sourceLocation   <http://media-soccer.com/MediaResource/R02>  .
+
+<http://example.com/Creator/C01>
+        rdf:type   media:Person ;
+        media:workFor     <http://example.com/Organization/BBC>  .
+        media:postition  "Journalist" .
