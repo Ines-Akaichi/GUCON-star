@@ -1,9 +1,10 @@
 # GUCON-star
 
-Here, we present a comprehensive framework called GUCON (Generic Graph Pattern based Policy Framework for Usage Control)-Star that focuses on specifying and enforcing usage control policies in various domains. The GUCON framework leverages the power of graph patterns to provide flexible and adaptable policy specification and enforcement mechanisms. By representing policies as graph patterns, we enable the expression of complex relationships and dependencies between different elements of the system. This approach will allow a fine-grained control over the usage of resources, ensuring compliance with specific requirements and restrictions.
+Here, we present a comprehensive framework called GUCON (Generic Graph Pattern based Policy Framework for Usage Control)-Star that focuses on specifying and enforcing usage control policies in various domains based on different types of constraints. The GUCON framework leverages the power of graph patterns to provide flexible and adaptable policy specification and enforcement mechanisms. By representing policies as graph patterns, we enable the expression of complex relationships and dependencies between different elements of the system. This approach will allow a fine-grained control over the usage of resources, ensuring compliance with specific requirements and restrictions.
 GUCOn-Star is built on top of [GUCON](https://link.springer.com/chapter/10.1007/978-3-031-45072-3_3). 
 
 ## Scope
+For now, GUCON-Star only implements the complaince checker using temporal constraints. 
 
 # Use Case 
 
@@ -71,4 +72,8 @@ FILTER (?t > "2021-02-25T21:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>
 The output specifies wether a specific Knowledge Base is compliant or not with the rules. Using our example, eg:JohnSmith is non-complaint with the rule specified above.
 
 # How to use our framework
-
+Run the jar under the target folder. The JAR can be invoked from the command line using the following command:
+```
+java -jar gucon-reified-0.0.1-SNAPSHOT.jar arg1 arg2;
+```
+Where arg1 is the path for the KB file (.ttl), and arg2 is the path for the rules (.txt).
