@@ -37,7 +37,7 @@ eg:JohnSmith   eg:share  <http://example.com/MediaCoverage/l.premierleague.com-2
 
 # Declare the log entry 
 
-eg:log1 rdf:type splog:Log ;
+eg:log20210225T203050  rdf:type splog:Log ;
 dct:title             "Log of tracking application of media sharing of the premier league match"@en ;
 dct:description       "This contains all traces of  media coverage sharing"@en ;
 dct:issued             "2021-02-25T20:30:50Z"^^xsd:dateTimeStamp  ;
