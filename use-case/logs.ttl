@@ -6,16 +6,17 @@
 @prefix  prov: <http://www.w3.org/ns/prov#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix  eg: <http://www.example.org#> .
+@prefix  egmc: <http://example.com/MediaCoverage/#> .
 @prefix splog: <http://purl.org/specialprivacy/splog#> .
 
 # Declare assertions
 
-eg:person1 rdf:type eg:Person .
-eg:person1 eg:position eg:Journalist .
+eg:JohnSmith rdf:type eg:Person .
+eg:JohnSmith eg:position eg:Journalist .
 
 #declare atomic events 
 
-eg:person1   eg:share  <http://example.com/MediaCoverage/l.premierleague.com-2020-coverage> .
+eg:JohnSmith   eg:share  egmc:l.premierleague.com-2020-coverage .
 
 # Declare the log entry 
 
@@ -24,16 +25,16 @@ dct:title             "Log of tracking application of media sharing of the premi
 dct:description       "This contains all traces of  media coverage sharing"@en ;
 dct:issued             "2021-02-25T20:30:50Z"^^xsd:dateTimeStamp  ;
 prov:wasAttributedTo  eg:TrackingSystemR2D2  ;
-splog:event <<eg:person1  eg:share  <http://example.com/MediaCoverage/l.premierleague.com-2020-coverage> >> . 
+splog:event <<eg:JohnSmith  eg:share  egmc:l.premierleague.com-2020-coverage >> . 
 
-<<eg:person1  eg:share  <http://example.com/MediaCoverage/l.premierleague.com-2020-coverage> >>  rdf:type   splog:SharingEvent ;
+<<eg:JohnSmith  eg:share  egmc:l.premierleague.com-2020-coverage >>  rdf:type   splog:SharingEvent ;
     splog:recipient    eg:recipient1;
     dct:title               "tracking media sharing as part of the premier league"@en ;
-    splog:dataSubject       eg:person1 ;
+    splog:dataSubject       eg:JohnSmith ;
     dct:description         "We tracked a new sharing of match materials"@en ;
     splog:transactionTime   "2021-02-25T20:30:50Z"^^xsd:dateTimeStamp ;
     splog:validityTime      "2021-02-25T20:30:00Z"^^xsd:dateTime  ;
     splog:message           "sharing of match resources ... tracked " ;
-    splog:instanceData  <http://example.com/MediaCoverage/l.premierleague.com-2020-coverage>  ;
+    splog:instanceData  egmc:l.premierleague.com-2020-coverage  ;
     splog:occurs  "2021-02-25T20:30:50Z"^^xsd:dateTime . 
                                                   
